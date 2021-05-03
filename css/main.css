@@ -89,23 +89,163 @@ header {
   height: 72%;
 }
 
+.sidebar {
+  width: 75px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #212121;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: width 0.3s;
+}
+
+.sidebar--opened {
+  width: 325px;
+  padding: 0 3% 0 4%;
+}
+
+.sidebar--opened .sidebar__hamburger {
+  display: none;
+}
+
+.sidebar--opened .sidebar__header {
+  display: flex;
+}
+
+.sidebar__menu {
+  position: absolute;
+  left: -400px;
+  transition: left 0.3s;
+}
+
+.sidebar--opened .sidebar__menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transition-delay: 0.1s;
+}
+
+.sidebar__hamburger-icon {
+  width: 29px;
+  height: 29px;
+  fill: var(--yellow);
+}
+
+.sidebar__hamburger {
+  position: absolute;
+  top: 27px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.sidebar__header {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+}
+
+.sidebar__close {
+  position: absolute;
+  top: -4px;
+  right: 23px;
+}
+
+.sidebar__close-icon {
+  width: 29px;
+  height: 29px;
+  fill: var(--yellow);
+}
+
+.side-menu__list {
+  padding-top: 100px;
+}
+
+.side-menu__item {
+  margin-bottom: 20px;
+}
+
+.side-menu__link {
+  font-size: 20px;
+  color: var(--yellow);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: var(--titles);
+}
+
+.side-menu__link:hover {
+  color: var(--red);
+}
+
 .fade-slider {
   width: 100%;
   height: 100%;
-  padding-top: 50px;
 }
 
 .fade-slider__item {
-  background: url(/lost-shirt/images/web-ready/content/hero/slider_pic_1.png)
-    center center / contain no-repeat;
+  background: center center / contain no-repeat;
   height: 100%;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fade-slider__item--visible {
+  opacity: 1;
+}
+
+.fade-slider__item--style-tshirts {
+  background-image: url(/lost-shirt/images/web-ready/content/hero/slider_pic_1.png);
+}
+
+.fade-slider__item--style-tshirts .fade-slider__text {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-164%) translateY(-52%);
+}
+
+.fade-slider__item--style-games {
+  background-image: url(/lost-shirt/images/web-ready/content/hero/slider_pic_2.png);
+}
+
+.fade-slider__item--style-games .fade-slider__text {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.fade-slider__item--style-games .lined-text {
+  align-items: center;
+}
+
+.fade-slider__item--style-presents {
+  background-image: url(/lost-shirt/images/web-ready/content/hero/slider_pic_3.png);
+}
+
+.fade-slider__item--style-presents .fade-slider__text {
+  left: 0;
+  bottom: 0;
+  transform: translateY(-120%);
+}
+
+.fade-slider__item--style-presents .lined-text {
+  align-items: center;
 }
 
 .fade-slider__text {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-164%, -52%);
 }
 
 .lined-text {
@@ -117,16 +257,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-164%, -52%);
+  margin: 0;
 }
 
 .lined-text__word {
   background: #000;
   padding: 0 17px 8px;
   margin-top: -7px;
+  white-space: nowrap;
 }
 
 .lined-text__word--color--yellow {
@@ -135,6 +273,10 @@ header {
 
 .lined-text__word:nth-child(2n) {
   margin-left: 8px;
+}
+
+.lined-text--no-indent .lined-text__word {
+  margin-left: 0;
 }
 
 .filter {
